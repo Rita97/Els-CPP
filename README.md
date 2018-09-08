@@ -1,2 +1,0 @@
-# Els-CPP
-gyakorlás
