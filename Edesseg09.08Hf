@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+
+
+
+class Edesseg{
+    int cukormennyiseg;
+   public : 
+   
+    Edesseg(int c){
+        cukormennyiseg=c;
+    }
+    int getCukormennyiseg(){
+        return cukormennyiseg;
+    }
+    void setCukormennyiseg(int ujcukormennyiseg){
+        cukormennyiseg=ujcukormennyiseg;
+    }
+    void toString(){
+        std::cout << getCukormennyiseg() << std::endl;
+    }
+};
+
+class Hidegedesseg : public Edesseg{
+    
+    int fogyaszthato;
+    
+    
+  public:
+  
+    Hidegedesseg(int m,int f): Edesseg(m){
+        fogyaszthato=f;
+    }
+    
+    int getFogyasthato(){
+        return fogyaszthato;
+    }
+    void setFogyaszthato(int ujfogyaszthato){
+        fogyaszthato=ujfogyaszthato;
+    }
+    void toString(){
+        std::cout << getFogyasthato() << std::endl;
+    }
+};
+
+class Sutemeny : public Edesseg{
+    int sutesiido;
+    public:
+    
+    Sutemeny(int m, int s): Edesseg(m){
+        sutesiido=s;
+    }
+    
+    int getSutesiido(){
+        return sutesiido;
+    }
+    void setSutesiido(int ujsutesiido){
+        sutesiido=ujsutesiido;
+    }
+    void toString(){
+        std::cout << getSutesiido() << std::endl;
+    }
+};
+
+
+class Fagylalt :public Edesseg{
+    string ize;
+    
+    public:
+    
+    Fagylalt(int m, string i): Edesseg(m){
+        ize=i;
+    }
+    
+    string getIze(){
+        return ize;
+    }
+    void setIze(string ujize){
+        ize=ujize;
+    }
+    void toString(){
+        std::cout << getIze() << std::endl;
+    }
+};
+
+
+int main()
+{
+   Edesseg m(2);
+   m.toString();
+   Hidegedesseg f(3,4);
+  f.toString();
+   Sutemeny s(5,2);
+   s.toString();
+   Fagylalt i(6,"csokis");
+   i.toString();
+  
+
+    return 0;
+}
