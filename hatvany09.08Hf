@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int hatvany (int szam, int kitevo){
+    int eredmeny=1;
+    for (int i=0; i<kitevo; i++){
+        eredmeny=eredmeny*szam;
+    }
+        return eredmeny;
+    
+}
+int main(){
+
+std::cout<< hatvany (3,5) <<std::endl;
+
+return 0;
+}
