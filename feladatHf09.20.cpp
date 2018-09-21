@@ -22,3 +22,32 @@ S(6);
 
     return 0;
 }
+#include <iostream>
+using namespace std;
+
+void Szam(int szam){
+    for(int i=1;i<szam+1; i++){
+        for(int j=1;j<szam+1;j++ ){
+          std::cout << "L" ;
+        }
+        std::cout << endl; 
+    }
+  
+}
+void Szamt(int szam){
+    for(int i=1;i<szam+1; i++){
+        for(int j=i;j<szam;j++ ){
+          std::cout << "E" ;
+        }
+        std::cout << endl; 
+    }
+  
+}
+
+int main()
+{
+ 
+Szam(3);
+Szamt(5);
+    return 0;
+}
