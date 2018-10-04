@@ -1,0 +1,18 @@
+#include <iostream>
+#define TOMBMERET 10
+using namespace std;
+
+char tomb[TOMBMERET];
+int tombok[TOMBMERET];
+
+int main()
+{
+    
+for(int i=0;i<TOMBMERET;i++){
+    tombok[i]=i*2;
+}
+for(int i=0;i<TOMBMERET;i++){
+    std::cout << tombok[i]<<"\t" ;
+}
+    return 0;
+}
