@@ -1,0 +1,126 @@
+#include <iostream>
+#define TOMBMERET 20
+
+using namespace std;
+
+ int tomb[TOMBMERET];
+
+
+bool duplazzmeg(int engem){
+    engem=engem;
+    return true ;
+
+}
+bool negyzet(int szam){
+szam=szam*szam;
+}
+
+int main()
+{
+    int elsoSzam=10;
+    int masodikSzam=20;
+    int harmadikSzam;
+    int negyedikSzam;
+
+
+
+
+     cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+    cout<<"----||-------"<<endl;
+ harmadikSzam=masodikSzam;
+
+      cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+
+    cout<<"----||-------"<<endl;
+
+    duplazzmeg(masodikSzam);
+
+         cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+
+
+    cout<<"----||-------"<<endl;
+
+     negyedikSzam = duplazzmeg(masodikSzam);
+
+         cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+     negyzet(negyedikSzam);
+
+         cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+      cout<<"----||-------"<<endl;
+
+      harmadikSzam=negyzet(negyedikSzam);
+
+           cout<<"elszoSzam = "<< elsoSzam<<endl;
+     cout<<"elsoSzam cim = "<<&elsoSzam<<endl;
+     cout<<"masodikSzam = "<< masodikSzam<<endl;
+     cout<<"masodikSzam cim = "<<&masodikSzam<<endl;
+    cout<<"harmadikSzam = "<< harmadikSzam<<endl;
+     cout<<"harmadikSzam cim = "<<&harmadikSzam<<endl;
+    cout<<"negyedikSzam = "<< negyedikSzam<<endl;
+     cout<<"negyedikSzam cim = "<<&negyedikSzam<<endl;
+
+
+     cout<<"----||-------"<<endl;
+
+
+for(int i=0;i<TOMBMERET;i++){
+    tomb[i]=i;
+}
+
+
+for(int i=0;i<TOMBMERET;i++){
+    cout<<"Tomb"<<i<<" = "<<tomb[i];
+    cout<<" \t\t A cime = "<<&tomb[i]<<endl;
+}
+
+
+
+
+
+    return 0;
+}
