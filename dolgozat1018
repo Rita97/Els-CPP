@@ -1,0 +1,66 @@
+#include <iostream>
+#define  TOMBMERET 25
+#define SZOVEG 5
+using namespace std;
+
+
+int szamokTomb[TOMBMERET];
+char szoveg[SZOVEG];
+
+void indexekkelFeltolt(){
+for(int i=0;i<TOMBMERET;i++){
+    szamokTomb[i]=i;
+}
+
+}
+void ketszeresen(){
+for(int i=0;i<TOMBMERET;i++){
+    szamokTomb[i]=2*i+1;
+}
+}
+void szamTombkiir(){
+for(int i=0;i<TOMBMERET;i++){
+    cout<<"A tomb "<<i<<". eleme = "<<szamokTomb[i]<<endl;
+}
+
+
+}
+
+void vegeBeTolt(){
+    for(char i=0;i<SZOVEG;i++){
+        szoveg[i]=i;
+    }
+}
+void szovegKilr(){
+for (char i=0;i<SZOVEG;i++){
+    cout<< i<<endl;
+}
+
+
+}
+
+void sortores(){
+    cout<<"----||-----"<<endl;
+}
+int main()
+{
+    char karakter();
+    int szam();
+    int* szamPointer;
+
+indexekkelFeltolt();
+szamTombkiir();
+sortores();
+ketszeresen();
+szamTombkiir();
+sortores();
+vegeBeTolt();
+szovegKilr();
+sortores();
+
+
+
+
+    cout << "Lefutottam" << endl;
+    return 0;
+}
