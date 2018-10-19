@@ -1,0 +1,97 @@
+#include <iostream>
+#define TOMBMERET 10
+using namespace std;
+
+int szamTomb[TOMBMERET];
+char charTomb[TOMBMERET];
+
+void sortores(){
+cout<<"----||-----"<<endl;
+}
+
+void tombFeltolt(){
+    for(int i=0;i<TOMBMERET;i++){
+        szamTomb[i]=i;
+    }
+}
+void parosSzamok(){
+    for (int i=0;i<TOMBMERET;i++){
+        szamTomb[i]=2*(i+1);
+    }
+}
+
+bool betszHelyre(int hova, int mit){
+    if(hova>=0&&hova<TOMBMERET){
+        szamTomb[hova]=mit;
+        return true;
+    }
+    return false;
+    }
+
+bool csere(int elsoindexe, int masodikindex){
+    if(elsoindexe<TOMBMERET&&elsoindexe>=0&&masodikindex<TOMBMERET&&masodikindex>=0){
+        int ideiglenes=szamTomb[elsoindexe];
+        szamTomb[elsoindexe]=szamTomb[masodikindex];
+        szamTomb[masodikindex]=ideiglenes;
+        return true;
+    }
+
+return false;
+}
+void szamKiir(){
+    for (int i=0;i<TOMBMERET;i++){
+        cout<<"A szam eleme "<<i<<". erteke = "<<szamTomb[i]<<endl;
+    }
+}
+
+void utolsoElemBealit(char karakter){
+    charTomb[9]=karakter;
+}
+
+void azAlmaJo(){
+   charTomb[0]='A';
+   charTomb[1]='z';
+   charTomb[2]=' ';
+   charTomb[3]='a';
+   charTomb[4]='l';
+   charTomb[5]='m';
+   charTomb[6]='a';
+   charTomb[7]=' ';
+   charTomb[8]='j';
+   charTomb[9]='o';
+}
+
+ bool helyezzeBe(int hova, char mit){
+           if(hova>=0&&hova<TOMBMERET){
+            charTomb[hova]=mit;
+            return true;
+           }
+           return false;
+ }
+
+ void kiir(){
+     for(int i=0;i<TOMBMERET;i++){
+        cout<<i<<". karakterem = "<<charTomb[i]<<endl;
+     }
+
+ }
+
+void konzolrorFeltolt(){
+    for(int i=0;i<TOMBMERET;i++){
+    cout<<"kerem adja meg a(z) "<<i+1<<". elemet"<<endl;
+    cin>>szamTomb[i];
+    }
+}
+
+
+int main()
+{
+ konzolrorFeltolt();
+ szamKiir();
+
+
+
+
+    cout << "Lefutottam" << endl;
+    return 0;
+}
