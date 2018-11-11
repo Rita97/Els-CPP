@@ -1,0 +1,72 @@
+# include <iostream> / könyvtárak be és ki tudunk kérni fügvényeket.
+
+using namespace std; /
+
+void szamKonzolrolNegyzetKiir(){ / létrehozunk egy függvényt aminek üres a paraméter listája
+    int szam;     / létrehozunk egy változót ami egy egész számot tárol
+    cin >> szam;  / majd ezt a számot bekérjük a konzolról
+    cout << szam*szam << endl; / ki írjuk a szám négyzetét
+}
+
+void szamKonzolrolFaktorialisKiir(){ / létrehozunk egy másik függvényt aminek szintén üres a paraméter listája
+    int szam;   /létrehozunk egy változót ami egy egész számot tárol
+    cin >> szam; / majd ezt a számot bekérjük a konzolról
+    for(int i = szam-1; i > 0; i--){ / majd egy for ciklus segitségével elindulunk a számtól addig mig a nulláig el nem érünk egyesével
+        szam*=i; / a számnak a négyzetét egyenlővé teszük az i-vel
+    }
+    cout << szam << endl; / simán csak kiíratjuk a számot
+}
+
+void szamokKonzolrolOsszegKiir(){ / létrehozunk egy függvényt aminek üres a paraméter listája
+    int szam;   /létrehozunk egy változót ami egy egész számot tárol
+    int szam2;  / majd létrehozunk egy másik változót ami egy egész számot tárol
+    cin >> szam;  / majd ezt a számot bekérjük a konzolról
+    cin >> szam2; / és a második számot is bekérjük konzolról
+    cout << szam+szam2 << endl; / kiíratjuk a két szám összegét
+}
+
+void pozitivParatlanKiir(int x){ / lértehozunk egy függvényt aminek van egy paramétere amig egy egyész szam
+    for(int i = 0; i < x; i++){ / létrehozunk egy ciklust ami nullától indul és egyesével addig megy míg el nem éri a számot
+        cout << i*2+1 << " "; / majd kiírjuk a páratlan számokat
+    }
+    cout << endl; / sortörés
+}
+
+void parosVagyParatlan(){ / lértehozunk egy függvényt aminek üres a paraméterlistája
+    int szam; / létrehozunk egy egész számot tároló váltózót
+    cin >> szam; / konzolról bekérjük ezt a számot
+    cout << (szam % 2 == 0 ? "paros" : "paratlan") << endl; / megnézük hogy páros e vagy páratlan az a szám ha igen kiírja hogy páros ha nem igaz akkor azt irja ki hogy páratlan
+}
+
+void amigNemNulla(){ / létrehozunk egy függvényt aminek üres a paraméter listája
+    int szam; / létrehozunk egy egész számot tároló változót
+    cin >> szam; / konzolrol bekérjük ezt a számot
+    while(szam != 0){ / megnézzük hogy ez a szám nem e nulla ha nem akkor irja ki
+        cin >> szam; / konzolról újra bekérjük a számot
+    }
+}
+
+void legnagyobbSzamAmigNemNulla(){ / létrehozunk egy függvényt aminek üres a paraméterlistája
+    int szam = 0; / létrehozunk egy egész számot tároló vátrozót
+    int legnagyobb = 0; majd létrehozunk egy másik egyész számotó tároló vátozót ami a nulla
+    do { / ha igaz akkor mit csináljon ha hamis akkor mit csináljon
+        cin >> szam; /bekérjük a számot a konzolról
+        if(szam > legnagyobb){ / megnézzük hogy a szám nagyobb mint nulla
+            legnagyobb = szam; /  a lgnagyobb számot egyenlővé tesszük a számmal
+            cout << "Legnagyobb: " << legnagyobb << endl; / kiírjuk a legnagyobb számot konzolra
+        }
+    }while(szam > 0); de csak akkor ha az a szam nagyobb mint nulla
+}
+
+int main() / a mainba meghivjuk a függvényeinket
+{
+    szamKonzolrolNegyzetKiir();
+    szamKonzolrolFaktorialisKiir();
+    szamokKonzolrolOsszegKiir();
+    pozitivParatlanKiir(5);
+    parosVagyParatlan();
+    amigNemNulla();
+    legnagyobbSzamAmigNemNulla();
+
+    return 0;
+}
