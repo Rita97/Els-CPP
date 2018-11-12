@@ -1,0 +1,33 @@
+#include <iostream>
+#define TOMBMERET 10
+using namespace std;
+
+int tomb[TOMBMERET];
+
+
+
+
+bool Felcserel(int elsoindex, int masodikindex){
+    if(elsoindex<TOMBMERET&&elsoindex>=0&&masodikindex<TOMBMERET&&masodikindex>=0){
+        int ideiglenes=tomb[elsoindex];
+        tomb[elsoindex]=tomb[masodikindex];
+        tomb[masodikindex]=ideiglenes;
+        return true;
+    }
+    return false;
+}
+
+void konzolrorFeltolt(){
+    for(int i=0;i<TOMBMERET;i++){
+    cout<<"kerem adja meg a(z) "<<i+1<<". elemet"<<endl;
+    cin>>tomb[i];
+    }
+}
+
+
+int main()
+{
+ konzolrorFeltolt();
+    cout << "Lefutottam" << endl;
+    return 0;
+}
