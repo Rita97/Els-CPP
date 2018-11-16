@@ -1,0 +1,61 @@
+#include <iostream> // könyvtárak segitségével kivehetünk és belerakhatunk függvényeket.A # jelzi hogy a programon kivül áll és mindenre vonatkozik a programon belül
+#define TOMBMERET 3 // definiálunk egy golbális tömböt amine a tömbneve a TOMBMERET és van neki egy fix méretet igy a programunkba csak a nevét kell használnunk az értéket már a számítógép teszi hozzá
+
+using namespace std;
+
+
+int globalisTomb[TOMBMERET];
+
+bool csere(int elsoIndex, int masodikIndex){
+    if(elsoIndex>=0&&elsoIndex<TOMBMERET&&masodikIndex>=0&&masodikIndex<TOMBMERET){
+        int ideiglenes = globalisTomb[elsoIndex];
+        globalisTomb[elsoIndex]=globalisTomb[masodikIndex];
+        globalisTomb[masodikIndex]=ideiglenes;
+
+        return true;
+    }
+    else return false;
+}
+
+//buborek rendezes algoritmusanak megvalositasa C++ -ban
+void buborekRendezes()
+{
+    int i;
+    int j;
+    for (i = 0; i < TOMBMERET-1; i++) {
+        for (j = 0; j < TOMBMERET - i - 1; j++){
+            if (globalisTomb[j] > globalisTomb[j + 1])
+                csere(j, j + 1);
+        }
+    }
+}
+
+void konzolrolFeltolt(){  // létrehozunk egy fügvényt van neki neve de a paraméter listája üres
+    for (int i=0; i<TOMBMERET; i++){ // egy for ciklussal végig megyünk a tömb elemein egyenkét
+        cin>> globalisTomb[i]; // kintröl a konzolrol hívjuk be a tömbünk számait
+    }
+
+}
+
+void kiir(){ // létrehozunk egy függvényt aminek van neve de a paraméter listája de üres
+    for(int i=0;i<TOMBMERET;i++){ // egy ciklussal bejárjuk egyesével a tömb eklmeit 
+        cout<<i<< ". eleme = "<<globalisTomb[i]<<endl; // kiíratjuk a tömb sorszámait eés mellé a megkapott értékeket
+    }
+
+
+
+}
+
+
+int main() {
+    //feltoltjuk a konzolrol a tombunk minden helyet
+    konzolrolFeltolt();
+    //kiirjuk a meg rendezetlen tombot
+    kiir();
+    //rendezzuk a tombot (ez nem jar kiirassal, igy nem latjuk a folyamatot)
+    buborekRendezes();
+    //kiirjuk a rendezett tomb elemeit
+    kiir();
+
+return 0;
+}
