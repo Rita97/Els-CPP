@@ -4,40 +4,40 @@ using namespace std;
 int* list= NULL; // létrehozunk egy pointeret ami egy  listán van és egyenlő nullával, nincs bennet semmi .
 int elemSzam; // megadjuk hogy az elemszám váltózó számokat takar
 
-bool legyenNulla(){ // 
-    if(elementNum==0){
+bool legyenNulla(){ // létrehozunk egy függvényt aminek nincs paraméterlistája
+    if(elemSzam==0){ // hivatkozunk az elemszámra hogy ha nulla akkor térjen vissza igazzal
         return true;
     }
-    return false;
+    return false;  // ha nem akkor hamissal térjen vissza
 }
-void deleteAllElements(){
-    if(elementNum!=0||list!= NULL){
-        delete[]list;
-        elementNum = 0;
+void törliAzElemet(){ // létrehozunk rgy függvényt aminek van neve de nincs paraméterlistája
+    if(elemSzam!=0||list!= NULL){ // ha az elemszám nem egyenlö nullával , a lista sem egyenlő nullával  
+        delete[]list; // akkor törölje a listát
+        elemSzam = 0; // elemszám egyenlő nullával
     }
 }
 
-void putLast(int newElement){
-    int *tempList = new int[elementNum+1];
-    for (int i = 0; i < elementNum; ++i) {
-        tempList[i]=list[i];
+void rakdUtolsonak(int ujElem){ // létrehozunk egy függvényt a inek van neve és paraméter listája ami egy új változó
+    int *listaPointer = new int[elemSzam+1]; // a listapointert enyenlövé tesszük az uj elemszámunkal ami eggyel nagyobb
+    for (int i = 0; i < elemSzam; ++i) { // egy ciklussal bejárom a listámat az utolsó elemig
+        listaPointer[i]=list[i]; // a listapointeremet egyenlővé teszem a listámmal
     }
-    tempList[elementNum]=newElement;
+    listaPointer[elemSzam]=ujElem; // a listapointerem elemszáma egyenlő az új elememmel
+    if(list){delete[]list;} // törlöm a régi listát
+    list=listaPointer; // egyenlővé teszem a listát a listapointerrel
+    elemSzam++; // növelem az elemszámot eggyel
+
+}
+
+void rakdBeElsonek(int ujElem){
+    int *listaPointer = new int[elemSzam+1];
+    listaPointer[0]=ujElem;
+    for (int i = 0; i < elemSzam; ++i) {
+        listaPointer[i+1]=list[i];
+    }
     if(list){delete[]list;}
-    list=tempList;
-    elementNum++;
-
-}
-
-void putFirst(int newElement){
-    int *tempList = new int[elementNum+1];
-    tempList[0]=newElement;
-    for (int i = 0; i < elementNum; ++i) {
-        tempList[i+1]=list[i];
-    }
-    if(list){delete[]list;}
-    list=tempList;
-    elementNum++;
+    list=listaPointer;
+    elemSzam++;
 }
 
 bool changeAtIndex(int index, int newElement){
