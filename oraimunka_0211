@@ -1,0 +1,116 @@
+// oraimunka_0211.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+
+
+class Tranzakcio {
+public:
+
+	string nev;
+	int ar;
+
+	Tranzakcio() {};
+	Tranzakcio(string _nev, int _ar) {
+		nev = _nev;
+		ar = _ar;
+
+	}
+};
+
+vector<Tranzakcio>konzolrolTranzakcio;
+vector<Tranzakcio>BeolvasottTranzakcio;
+
+int main()
+
+{
+	string nev;
+	int ar;
+	int db = 1;
+	char elvalaszto = ':';
+
+
+	while (nev != "0") {
+		cout << "kerem adja meg a " << db << " . termek nevet" << endl;
+		cin >> nev;
+
+		if (nev != "0") {
+			cout << "kerem adja meg a " << db << " . termek arat" << endl;
+			cin >> ar;
+			db++;
+			konzolrolTranzakcio.push_back(Tranzakcio(nev, ar));
+
+		}
+
+	}
+
+	cout << "Beolvasott tranzakciok szama" << konzolrolTranzakcio.size() << endl;
+
+	ofstream vasarlasok("vasarlasok.txt");
+
+	if (vasarlasok.is_open()) {
+		cout << "vasarlasok lista nyitva van" << endl;
+
+		for (int i = 0; i < konzolrolTranzakcio.size; i++) {
+			vasarlasok << konzolrolTranzakcio[i].nev;
+			vasarlasok << elvalaszto;
+			vasarlasok << konzolrolTranzakcio[i].ar;
+			vasarlasok << '\n';
+		}
+		cout << "vasarlok lista feltoltve" << endl;
+
+	}
+
+	else { cout << "nem sikerult megnyitni a vasarlok listat" << endl; }
+
+	vasarlasok.close();
+
+	cout << "vasarlok lista bezarva" << endl;
+
+
+	ifstream vasarlokolvasasra("vasarlok.txt");
+
+	if (vasarlokolvasasra.is_open()) {
+		cout << "vasarlok lista megynyitva olvasasra" << endl;
+
+		string beolvasottSor;
+		string beolvasottNev;
+		string beolvasottAr;
+
+		while (getline(vasarlokolvasasra, beolvasottSor)) {
+
+			unsigned long elvalasztasHelye = beolvasottSor.find('\t');
+			beolvasottNev = beolvasottSor.substr(0, elvalasztasHelye);
+			beolvasottAr = beolvasottSor.substr(elvalasztasHelye + 1, beolvasottSor.size());
+
+			int ar = stoi(beolvasottAr);
+
+			BeolvasottTranzakcio.push_back(Tranzakcio(beolvasottNev, ar));
+		}
+	}
+	else { cout << "nem sikerult megnyitni a tranzakciok listat"; }
+	
+	vasarlokolvasasra.close();
+	cout << "a tranzakcio lista olvasasa befejezodott" << endl;
+
+	for (int j = 0; j < BeolvasottTranzakcio.size; j++) {
+		cout << BeolvasottTranzakcio[j].nev << elvalaszto << BeolvasottTranzakcio[j].ar << endl;
+
+	}
+	cout << "minden tarolt adat kiirva" << endl;
+
+	int osszebevetel = 0;
+	for (int k = 0; k < BeolvasottTranzakcio.size; ++k) {
+	}
+
+return 0;
+
+}
+
+
