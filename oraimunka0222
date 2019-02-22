@@ -1,0 +1,84 @@
+
+//2 kommentelések segítségével írja le/hon lépések szükségesek a fájlból való kiolvasásához CPP nyelven
+//3 valósísa meg a kodot a következő specifikációval: fájl: hallgatok.txt, kinézet: nev'\t' altag
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+//létrehozunk egy osztályt amibe azokat a változokat hottuzuk kétre amiket majd a fájlunkba szükéges adat lesz
+//és a hozzá tartózó kunstruktorokat
+class Hallgatok
+{
+public:
+
+	string nev;
+	int atlag;
+
+	Hallgatok() {};
+	Hallgatok(string _nev, int _atlag) {
+		
+		nev = _nev;
+		atlag = _atlag;
+	};
+
+
+};
+
+// létrehozunk egy vektort ami az osztályunk lesz
+
+vector<Hallgatok>Hallgatokbeolvasasa;
+
+
+
+
+
+
+
+int main()
+{
+	// megadjuk a fált amiből kiakarunk olvasni az adatokat
+	ifstream fajlom("hallgatok.txt");
+
+
+	// if segitségével megnyitjuk a fájlunkat, illetve ha nem sikerül akkor azt jelzi nekünk
+
+	if (fajlom.is_open())
+	{
+		cout << "fájlom megvan nyitva" << endl;
+		// miután sikerült megynyitni létrehozom azokat a változokat amik szerepelnek a fájlomba 
+		//és egy új változot ami az egész sorunkat fogja tárolni
+
+		string beolvasottSor;
+		string beolvasottNev;
+		string beolvasottÁtlag;
+
+		//mikor már megvannak a változoink while segitségével a fájlomba megkeresük a sort amit majd tagonként feldarabolunk
+
+		while (getline(fajlom, beolvasottSor)) {
+			//megkeressük az elválasztót ami most tabulátor és hozzá igazitva tagokta bontjuk a sorunkat
+			//az elválasztás helyét megkeressük a sorunkba ami a tabulátor
+			elvalasztoHelye = beolvasottSor.find('\t');
+
+			//ahoz hogy megkapjuk a beolvasott nevet meg kell keresnunk a beolvasott sorunk kezdetét 
+			//és az elválasztóig nevezük a nevnek
+			beolvasottNev = beolvasottSor.substr(0, elvalasztoHelye);
+			beolvasottÁtlag = beolvasottSor.substr(elvalasztoHelye + 1, beolvasottSor.size());
+
+
+		}
+
+
+	}
+	else {
+		cout << "nem sikerül megynyitni a fájt" << endl;
+	}
+	// miután befejeztük az olvasást becsukjuk a fájlt
+	fajlom.close();
+
+    std::cout << "Hello World!\n"; 
+
+	return 0;
+};
