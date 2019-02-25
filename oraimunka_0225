@@ -1,0 +1,116 @@
+// oraimunka_0225.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+
+#define MERET 3
+
+using namespace std;
+
+class AutoAlkatresz {
+public:
+	string marka;
+	int gyartasiEv;
+	int suly;
+	int ar;
+
+	AutoAlkatresz() {};
+	AutoAlkatresz(string _marka, int _gyartasiEv, int _suly, int _ar) {
+
+		marka = _marka;
+		gyartasiEv = _gyartasiEv;
+		suly = _suly;
+		ar = _ar;
+	}
+};
+
+AutoAlkatresz autoalkatreszek[MERET];
+vector<AutoAlkatresz> beolvasottAlkatresz;
+
+
+
+int main()
+
+{
+	string marka;
+	int gyartasiEv;
+	int suly;
+	int ar;
+	char elvalaszto = '\t';
+
+
+	for (int i = 0; i < MERET; i++) {
+		cout << "Kerem adja meg a " << i << ". markat :" << endl;
+		cin >> marka;
+		cout << "Kerem adja meg az " << i << ". evet :" << endl;
+		cin >> gyartasiEv;
+		cout << "Kerem adja meg a " << i << ". sulyt :" << endl;
+		cin >> suly;
+		cout << "Kerem adja meg az " << i << ". art :" << endl;
+		cin >> ar;
+		autoalkatreszek[i] = AutoAlkatresz(marka, gyartasiEv, suly, ar);
+
+	}
+
+	ofstream fajlom("autoalkatreszek.txt");
+
+	if (fajlom.is_open()) {
+		cout << "a fajlom irasra kesz" << endl;
+
+		for (int i = 0; i < MERET; i++) {
+			fajlom << autoalkatreszek[i].marka;
+			fajlom << elvalaszto;
+			fajlom << autoalkatreszek[i].gyartasiEv;
+			fajlom << elvalaszto;
+			fajlom << autoalkatreszek[i].suly;
+			fajlom << elvalaszto;
+			fajlom << autoalkatreszek[i].ar;
+			fajlom << '\n';
+
+		}
+	}
+	else {
+		cout << "nem sikerult megnyitni a fajlt" << endl;
+	}
+
+	fajlom.close();
+
+	cout << "fajlom bezarva" << endl;
+
+	ifstream fajlomOlvasasra("autoalkatreszek.txt");
+
+	if (fajlomOlvasasra.is_open()) {
+		cout << "fajlom olvasasra nyitva" << endl;
+
+		string beolvasottSor;
+		string beolvasottMarka;
+		string beolvasottGyartasiEv;
+		string beolvasottSuly;
+		string beolvasottAr;
+		string bontottDarab;
+
+		while (getline(fajlomOlvasasra,beolvasottSor))
+		{
+			unsigned long elvalasztoHelye = beolvasottSor.find('\t');
+			beolvasottMarka = beolvasottSor.substr(0, elvalasztoHelye);
+			bontottDarab = beolvasottSor.substr(elvalasztoHelye + 1, beolvasottSor.size());
+			elvalasztoHelye = bontottDarab.find(elvalaszto);
+			beolvasottGyartasiEv = bontottDarab.substr(0, elvalasztoHelye);
+			bontottDarab = bontottDarab.substr(elvalasztoHelye + 1, bontottDarab.size());
+			elvalasztoHelye = bontottDarab.find(elvalaszto);
+			beolvasottSuly = bontottDarab.substr(0, elvalasztoHelye);
+			bontottDarab = bontottDarab.substr(elvalasztoHelye + 1, bontottDarab.size());
+			elvalasztoHelye = bontottDarab.find(elvalaszto);
+			beolvasottAr = bontottDarab.substr(0, elvalasztoHelye);
+			bontottDarab = bontottDarab.substr(elvalasztoHelye + 1, bontottDarab.size());
+			elvalasztoHelye = bontottDarab.find(elvalaszto);
+		}
+	}
+
+
+
+    std::cout << "Hello World!\n"; 
+}
